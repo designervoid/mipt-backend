@@ -5,7 +5,7 @@ import datetime
 from django.utils import timezone
 
 class User(models.Model):
-    id = models.ForeignKey(on_delete=models.DO_NOTHING)
+    # id = models.ForeignKey(on_delete=models.DO_NOTHING)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     room = models.IntegerField()
@@ -14,4 +14,4 @@ class User(models.Model):
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
-        return self.user_text
+        return self.first_name
