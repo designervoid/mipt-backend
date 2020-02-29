@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
-
+from .models import User, Orders
 
 def login(request):
     context = {}
@@ -19,5 +20,6 @@ def logout(request):
 
 
 def detail(request, first_name):
-    context = {}
-    return render(request, 'detail.html', context)
+    info_orders = Orders.objects.order_by('-created_data')
+    output = ', '.join([q.id_order for q in info_orders])
+    return HttpResponse(output)
