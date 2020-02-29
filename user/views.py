@@ -2,16 +2,22 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.http import HttpResponse
-
 
 def login(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    context = {}
+    return render(request, 'login.html', context)
 
 
 def registry(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    context = {}
+    return render(request, 'registry.html', context)
 
 
 def logout(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    context = {}
+    return render(request, 'logout.html', context)
+
+
+def detail(request, first_name):
+    context = {}
+    return render(request, 'detail.html', context)
