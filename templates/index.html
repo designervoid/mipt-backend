@@ -6,11 +6,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
+    {% include "login.html" %}
+    {% include "registry.html" %}
+    {% include "detail.html" %}
+    {% include "logout.html" %}
+
     index
     {% block login %} {% endblock %}
     {% block logout %} {% endblock %}
     {% block registry %} {% endblock %}
     {% block base %} {% endblock %}
 </body>
-
 </html>

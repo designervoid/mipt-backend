@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'order',
-    'user'
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,11 @@ ROOT_URLCONF = 'miptHack.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'user'),
+            os.path.join(BASE_DIR, 'order')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
