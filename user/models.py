@@ -11,7 +11,6 @@ class User(models.Model):
     room = models.IntegerField()
     group = models.CharField(max_length=5)
     passwd = models.CharField(max_length=20)
-    pub_date = models.DateTimeField('date published')
 
     def __str__(self):
         return self.first_name
