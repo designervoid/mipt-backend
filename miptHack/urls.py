@@ -16,11 +16,41 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import index
+from user.models import User, Orders
+from django.conf.urls import url
+from rest_framework import routers, serializers, viewsets
 
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'room', 'group']
+
+
+class OrdersSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Orders
+        fields = ['theme', 'body', 'tags', 'created_data']
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class OrdersViewSet(viewsets.ModelViewSet):
+    queryset = Orders.objects.all().order_by('-created_data')
+    serializer_class = OrdersSerializer
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'orders', OrdersViewSet)
 
 urlpatterns = [
     path('user/', include('user.urls')),
     path('order/', include('order.urls')),
     path('admin/', admin.site.urls),
-    path('', index, name='index')
+    path('', index, name='index'),
+
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls'))
 ]
