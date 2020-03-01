@@ -63,15 +63,18 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'miptHack.urls'
 
+TEMPLATES_DIR_LIST = [
+    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'user'),
+    os.path.join(BASE_DIR, 'order'),
+    os.path.join(BASE_DIR, 'news')
+]
+FRONTEND_DIR = [os.path.join(BASE_DIR, 'frontend')]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'user'),
-            os.path.join(BASE_DIR, 'order'),
-            os.path.join(BASE_DIR, 'news')
-        ],
+        'DIRS': TEMPLATES_DIR_LIST + FRONTEND_DIR,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

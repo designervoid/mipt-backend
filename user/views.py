@@ -22,5 +22,5 @@ def logout(request):
 def detail(request, first_name):
     if request.method == 'GET':
         info_orders = Orders.objects.all().order_by('-created_data')
-        output = [q.body for q in info_orders]
-    return JsonResponse(output)
+        output = [q for q in info_orders]
+    return JsonResponse(output, safe=False)
