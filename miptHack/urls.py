@@ -39,7 +39,7 @@ class OrdersSerializer(serializers.HyperlinkedModelSerializer):
 class ClaimSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Claim
-        fields = ['id_order', 'executor', 'role', 'cost', 'tools', 'info', 'progress']
+        fields = ['id_order', 'executor', 'role', 'info', 'progress']
 
 
 class NewsSerializer(serializers.HyperlinkedModelSerializer):

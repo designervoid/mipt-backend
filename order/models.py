@@ -21,8 +21,6 @@ class Claim(models.Model):
     id_order = models.OneToOneField(Orders, on_delete=models.DO_NOTHING)
     executor = models.CharField(max_length=20)
     role = models.CharField(max_length=2, choices=ROLES)
-    cost = models.IntegerField(null=False, default=0)
-    tools = models.CharField(max_length=40)
     info = models.CharField(max_length=200)
     progress = models.CharField(max_length=2, choices=STATUS)
 
@@ -32,7 +30,7 @@ class Claim(models.Model):
 
 class Feedback(models.Model):
     question = models.CharField(max_length=100)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now=False)
     answer = models.CharField(max_length=100)
     check_ans = models.BooleanField()
 
