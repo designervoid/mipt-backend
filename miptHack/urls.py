@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import index
 from user.models import User, Orders
-from order.models import Claim
+from order.models import Claim, Feedback
 from news.models import News
 from django.conf.urls import url
 from rest_framework import routers, serializers, viewsets
@@ -46,6 +46,12 @@ class NewsSerializer(serializers.HyperlinkedModelSerializer):
         model = News
         fields = ['header', 'short_descriptions', 'text', 'mark_text', 'mark_color', 'date_published']
 
+
+class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ['question', 'date', 'answer', 'check_ans']
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -62,12 +68,16 @@ class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all().order_by('-date_published')
     serializer_class = NewsSerializer
 
+class FeedbackViewSet(viewsets.ModelViewSet):
+    queryset = Feedback.objects.all().order_by('-date')
+    serializer_class = FeedbackSerializer
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'orders', OrdersViewSet)
 router.register(r'claims', ClaimViewSet)
 router.register(r'news', NewsViewSet)
+router.register(r'feedback', FeedbackViewSet)
 
 
 urlpatterns = [

@@ -8,3 +8,6 @@ def old(request):
 def new(request):
     context = {}
     return render(request, 'new.html', context)
+
+def feedback(request):
+    return render(request, 'feedback.html', context={})

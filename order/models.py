@@ -29,3 +29,13 @@ class Claim(models.Model):
 
     def __str__(self):
         return self.executor
+
+
+class Feedback(models.Model):
+    question = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now=True)
+    answer = models.CharField(max_length=100)
+    check_ans = models.BooleanField()
+
+    def __str__(self):
+        return self.question
