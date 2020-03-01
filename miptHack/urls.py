@@ -73,6 +73,7 @@ router.register(r'news', NewsViewSet)
 urlpatterns = [
     path('user/', include('user.urls')),
     path('order/', include('order.urls')),
+    path('news/', include('news.urls')),
     path('admin/', admin.site.urls),
     path('', index, name='index'),
 

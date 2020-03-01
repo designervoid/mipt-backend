@@ -69,7 +69,8 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'user'),
-            os.path.join(BASE_DIR, 'order')
+            os.path.join(BASE_DIR, 'order'),
+            os.path.join(BASE_DIR, 'news')
         ],
         'APP_DIRS': True,
         'OPTIONS': {

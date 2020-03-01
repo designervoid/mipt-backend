@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 # Create your views here.
 from .models import User, Orders
@@ -20,6 +20,7 @@ def logout(request):
 
 
 def detail(request, first_name):
-    info_orders = Orders.objects.order_by('-created_data')
-    output = ', '.join([q.id_order for q in info_orders])
-    return HttpResponse(output)
+    if request.method == 'GET':
+        info_orders = Orders.objects.all().order_by('-created_data')
+        output = [q.body for q in info_orders]
+    return JsonResponse(output)

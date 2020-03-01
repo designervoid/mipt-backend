@@ -1,4 +1,17 @@
-{% include "index.html" %}
+{% extends "index.html" %}
+
+{% include "login.html" %}
+{% include "registry.html" %}
+{% include "detail.html" %}
+{% include "logout.html" %}
+
 {% block base %}
 base
+
+
+{% block login %} {% endblock %}
+{% block logout %} {% endblock %}
+{% block registry %} {% endblock %}
+
+
 {% endblock %}
