@@ -21,6 +21,7 @@ from order.models import Claim, Feedback
 from news.models import News
 from django.conf.urls import url
 from rest_framework import routers, serializers, viewsets
+from django.views.generic import TemplateView
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -80,6 +81,9 @@ router.register(r'news', NewsViewSet)
 router.register(r'feedback', FeedbackViewSet)
 
 
+
+
+
 urlpatterns = [
     path('user/', include('user.urls')),
     path('order/', include('order.urls')),
@@ -88,5 +92,8 @@ urlpatterns = [
     path('', index, name='index'),
 
     url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls'))
+    url(r'^api-auth/', include('rest_framework.urls')),
+
+    path('', TemplateView.as_view(template_name='application.html'),
+    name='app',),
 ]

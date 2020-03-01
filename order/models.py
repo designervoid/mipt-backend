@@ -26,7 +26,6 @@ class Claim(models.Model):
     info = models.CharField(max_length=200)
     progress = models.CharField(max_length=2, choices=STATUS)
 
-
     def __str__(self):
         return self.executor
 
