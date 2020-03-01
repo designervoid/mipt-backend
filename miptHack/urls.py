@@ -34,7 +34,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class OrdersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Orders
-        fields = ['body', 'role_user', 'created_data', 'comments', 'progress_user']
+        fields = ['body', 'created_data', 'comments', 'progress_user']
 
 
 class ClaimSerializer(serializers.HyperlinkedModelSerializer):
