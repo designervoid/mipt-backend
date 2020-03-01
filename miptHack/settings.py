@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'news',
     'webpack_loader',
     'corsheaders',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [
