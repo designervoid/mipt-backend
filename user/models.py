@@ -16,11 +16,27 @@ class User(models.Model):
 
 
 class Orders(models.Model):
+    ROLES_USER = (
+        ('pl', 'plumber'),
+        ('cl', 'cleaner'),
+        ('ex', 'exterminator'),
+        ('el', 'electrician'),
+        ('nu', 'nurse'),
+        ('se', 'security'),
+    )
+    STATUS_USER = (
+        ('cd', 'considuration'),
+        ('pf', 'performed'),
+        ('rj', 'rejected'),
+        ('rd', 'ready'),
+    )
+
     id_order = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     body = models.TextField()
-    theme = models.CharField(max_length=40)
-    tags = models.CharField(max_length=20)
+    role_user = models.CharField(max_length=2, choices=ROLES_USER)
     created_data = models.DateTimeField(auto_now=True)
+    comments = models.CharField(max_length=30)
+    progress_user = models.CharField(max_length=2, choices=STATUS_USER)
 
     def __str__(self):
         return self.body

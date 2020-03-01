@@ -33,7 +33,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class OrdersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Orders
-        fields = ['theme', 'body', 'tags', 'created_data']
+        fields = ['body', 'role_user', 'created_data', 'comments', 'progress_user']
 
 
 class ClaimSerializer(serializers.HyperlinkedModelSerializer):
@@ -79,7 +79,6 @@ router.register(r'orders', OrdersViewSet)
 router.register(r'claims', ClaimViewSet)
 router.register(r'news', NewsViewSet)
 router.register(r'feedback', FeedbackViewSet)
-
 
 
 

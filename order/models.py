@@ -31,7 +31,7 @@ class Claim(models.Model):
 class Feedback(models.Model):
     question = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now=False)
-    answer = models.CharField(max_length=100)
+    answer = models.CharField(max_length=100, default='')
     check_ans = models.BooleanField()
 
     def __str__(self):
