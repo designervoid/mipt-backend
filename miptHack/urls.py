@@ -24,6 +24,7 @@ from rest_framework import routers, serializers, viewsets
 from django.views.generic import TemplateView
 
 
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -53,13 +54,16 @@ class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
         model = Feedback
         fields = ['question', 'date', 'answer', 'check_ans']
 
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class OrdersViewSet(viewsets.ModelViewSet):
     queryset = Orders.objects.all().order_by('-created_data')
+    message = queryset[0]
     serializer_class = OrdersSerializer
+
 
 class ClaimViewSet(viewsets.ModelViewSet):
     queryset = Claim.objects.all().order_by('-progress')
@@ -94,5 +98,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls')),
 
     path('', TemplateView.as_view(template_name='application.html'),
-    name='app',),
+    name='app'),
 ]
